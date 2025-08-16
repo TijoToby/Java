@@ -1,32 +1,44 @@
-import java.util.Scanner;
-class Books {
-    String title;
-    String author;
-    double price;
-    Books(String t, String a, double p) {
-         title= t;
-        author= a;
-        price = p;
-    }
 
-    void displayInfo() {
-        System.out.println("Title : " + title);
-        System.out.println("Author: " + author);
-        System.out.println("Price : ₹" + price);
-        System.out.println("------------------------");
+class Book {
+     String title, author;
+ Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+  void display() {
+        System.out.println("Title: " + title + "\nAuthor: " + author);
     }
 }
-
+class Technical extends Book {
+    String subject;
+     Technical(String title, String author, String subject) {
+        super(title, author);
+        this.subject = subject;
+    }
+     void display() {
+        super.display();
+        System.out.println("Subject: " + subject);
+    }
+}
+class Story extends Technical {
+     String genre;
+  Story(String title, String author, String subject, String genre) {
+        super(title, author, subject);
+        this.genre = genre;
+    }
+    void display() {             
+        super.display();
+        System.out.println("Genre: " + genre);
+    }
+}
 public class BookDemo {
     public static void main(String[] args) {
- Books book1 = new Books("The Alchemist", "Paulo Coelho", 399.00);
-        Books book2 = new Books("Atomic Habits", "James Clear", 499.00);
+        Book b1 = new Book("Generic Book", "Harvid Davison");
+        Book b2 = new Technical("Java Essentials", "JamesGosling", "Computer Science");
+        Book b3 = new Story("Fantasy Tales", "Richard James", "Literature", "Fantasy");
 
-        // Display their details
-        System.out.println("Book 1 Details:");
-        book1.displayInfo();
-
-        System.out.println("Book 2 Details:");
-        book2.displayInfo();
+        b1.display();  System.out.println();
+        b2.display();  System.out.println();
+        b3.display();
     }
 }
